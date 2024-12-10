@@ -11,14 +11,14 @@ This project implements a multi-modal neural network that processes both image d
 - **Image Branch**: EfficientNetB5 with custom top layers
 - **Numeric Branch**: Multi-layer neural network
 - **Combined Architecture**: Fusion of image and numeric features with skip connections
-- **Training Stability**: Implements gradient clipping and batch normalization
+- **Training Stability**: Implements dropout and batch normalization
 
 ## Key Features
 
 - Dual-input processing (images + numeric data)
 - Data augmentation pipeline
 - Class weight balancing
-- Advanced regularization techniques
+- Regularization techniques
 - Learning rate scheduling
 - Early stopping with best weights restoration
 
@@ -28,13 +28,13 @@ This project implements a multi-modal neural network that processes both image d
 tensorflow>=2.0.0
 numpy
 scikit-learn
-pillow
+
 ```
 
 ## Model Performance
 
 Current model achieves:
-- Accuracy: 65% (validation)
+- Accuracy: 75% (Testing)
 - Stable training dynamics
 - No overfitting observed
 - Room for further optimization
@@ -73,46 +73,15 @@ history = model.fit(
 
 - Batch Size: 32
 - Initial Learning Rate: 1e-4
-- Optimizer: Adam with gradient clipping
+- Optimizer: Adam
 - Loss Function: Binary Cross-entropy
 
-## Results
-
-The model demonstrates:
-- Consistent improvement in accuracy from 35% to 65%
-- Stable loss curves
-- Validation metrics outperforming training metrics
-- Potential for further improvement with extended training
 
 ## Future Improvements
 
-1. Extended training duration
-2. Reduced regularization strength
-3. Architecture modifications for better feature extraction
-4. Experimentation with different backbone models
+1. ViT Transformers
+2. BERT derivatives
+3. Implement cross-attention mechanisms between visual and textual features
 
-## Contributing
 
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
-
-## License
-
-[MIT License](LICENSE)
-
-## Contact
-
-[Your Contact Information]
-
-## Citation
-
-If you use this code in your research, please cite:
-
-```
-@misc{multimodal-classification,
-  author = {[Your Name]},
-  title = {Multi-Modal Image Classification with EfficientNetB5},
-  year = {2024},
-  publisher = {GitHub},
-  url = {[Your Repository URL]}
-}
-```
+   
