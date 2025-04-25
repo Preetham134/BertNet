@@ -1,87 +1,45 @@
-# Multi-Modal Image Classification with EfficientNetB5
+# Student Graduation Outcome Prediction
 
-A deep learning project that combines image and numeric features using EfficientNetB5 architecture for binary classification tasks.
+This project implements and compares Tabnet and Vanilla Transformer models to predict student graduation outcomes using both static and sequential educational data. The Transformer-based approach achieved 57% accuracy compared to Tabnet's 42%.
 
-## Project Overview
+## Overview
 
-This project implements a multi-modal neural network that processes both image data and numeric features simultaneously. It utilizes EfficientNetB5 as the backbone for image feature extraction and combines it with a separate numeric data processing branch.
+Educational institutions are increasingly seeking data-driven methods to identify at-risk students and improve graduation rates. This project leverages modern deep learning approaches to analyze both static student information (demographics, entry qualifications, etc.) and sequential data (semester-by-semester performance, attendance patterns, etc.) to predict graduation outcomes and identify key influencing factors.
 
-## Architecture
+## Features
 
-- **Image Branch**: EfficientNetB5 with custom top layers
-- **Numeric Branch**: Multi-layer neural network
-- **Combined Architecture**: Fusion of image and numeric features with skip connections
-- **Training Stability**: Implements dropout and batch normalization
+- Integration of static and sequential educational data
+- Implementation of Tabnet and Vanilla Transformer models
+- Explainable AI analysis using SHAP and LIME frameworks
+- Identification of 5 critical success predictors
+- Visualization tools for model interpretation
 
-## Key Features
+## Installation
 
-- Dual-input processing (images + numeric data)
-- Data augmentation pipeline
-- Class weight balancing
-- Regularization techniques
-- Learning rate scheduling
-- Early stopping with best weights restoration
-
-## Requirements
-
-```
-tensorflow>=2.0.0
-numpy
-scikit-learn
-
+```bash
+git clone https://github.com/yourusername/student-graduation-prediction.git
+cd student-graduation-prediction
 ```
 
-## Model Performance
+## Data
 
-Current model achieves:
-- Accuracy: 75% (Testing)
-- Stable training dynamics
-- No overfitting observed
-- Room for further optimization
+The dataset used in this project includes:
 
-## Usage
+- **Static data**: Student demographics, high school GPA, standardized test scores, socioeconomic indicators
+- **Sequential data**: Semester-by-semester GPA, course load, attendance records, participation metrics
 
-### Data Preparation
+## Models
 
-```python
-# Prepare your data in the following format:
-X_image_train  # Image data (N, height, width, channels)
-X_numeric_train  # Numeric features (N, num_features)
-y_train  # Labels
-```
+### Tabnet
 
-### Training
+TabNet is a deep learning architecture designed specifically for tabular data, allowing for interpretable decision-making by learning which features to use at each decision step.
 
-```python
-# Import required modules
-from model import create_model
+### Vanilla Transformer
 
-# Initialize and train the model
-model = create_model(input_shape_image, input_shape_numeric)
-history = model.fit(
-    [X_image_train, X_numeric_train_norm],
-    y_train,
-    validation_data=([X_image_val, X_numeric_val_norm], y_val),
-    epochs=50,
-    batch_size=32,
-    callbacks=callbacks,
-    class_weight=class_weight_dict
-)
-```
-
-## Training Configuration
-
-- Batch Size: 32
-- Initial Learning Rate: 1e-4
-- Optimizer: Adam
-- Loss Function: Binary Cross-entropy
+Our custom implementation of a Transformer model processes both static features and the sequential educational timeline data, capturing temporal patterns in student performance.
 
 
-## Future Improvements
+## Results
 
-1. ViT Transformers
-2. BERT derivatives
-3. Implement cross-attention mechanisms between visual and textual features
-
-
-   
+- **Transformer model**: 57% accuracy
+- **Tabnet model**: 42% accuracy
